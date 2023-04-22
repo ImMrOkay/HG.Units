@@ -17,6 +17,7 @@ namespace Gu.Units
     {
         /// <summary>
         /// Gets a value that is zero <see cref="Gu.Units.LengthUnit.Metres"/>
+        /// 长度0值
         /// </summary>
         public static readonly Length Zero = default(Length);
 
@@ -31,14 +32,23 @@ namespace Gu.Units
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Gu.Units.Length"/> struct.
+        /// 构造函数，将值转换为国际单位m，然后调用统一的构造函数
         /// </summary>
-        /// <param name="value">The scalar value.</param>
-        /// <param name="unit"><see cref="Gu.Units.LengthUnit"/>.</param>
+        /// <param name="value">The scalar value.
+        /// 长度的值
+        /// </param>
+        /// <param name="unit"><see cref="Gu.Units.LengthUnit"/>.
+        /// 长度的单位
+        /// </param>
         public Length(double value, LengthUnit unit)
         {
             this.metres = unit.ToSiUnit(value);
         }
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="metres"></param>
         private Length(double metres)
         {
             this.metres = metres;
@@ -46,16 +56,19 @@ namespace Gu.Units
 
         /// <summary>
         /// Gets the quantity in <see cref="Gu.Units.LengthUnit.Metres"/>
+        /// 国际单位计量下的值
         /// </summary>
         public double SiValue => this.metres;
 
         /// <summary>
         /// Gets the <see cref="Gu.Units.LengthUnit"/> for the <see cref="SiValue"/>
+        /// 国际单位m
         /// </summary>
         public LengthUnit SiUnit => LengthUnit.Metres;
 
         /// <summary>
         /// Gets the <see cref="Gu.Units.IUnit"/> for the <see cref="SiValue"/>
+        /// 国际单位m
         /// </summary>
         IUnit IQuantity.SiUnit => LengthUnit.Metres;
 

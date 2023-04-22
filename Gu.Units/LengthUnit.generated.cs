@@ -7,6 +7,7 @@ namespace Gu.Units
     /// <summary>
     /// A type for the unit <see cref="Gu.Units.Length"/>.
     /// Contains logic for conversion and formatting.
+    /// 长度单位
     /// </summary>
     [Serializable]
     [TypeConverter(typeof(LengthUnitTypeConverter))]
@@ -15,30 +16,35 @@ namespace Gu.Units
         /// <summary>
         /// The Metres unit
         /// Contains logic for conversion and formatting.
+        /// 米
         /// </summary>
         public static readonly LengthUnit Metres = new LengthUnit(metres => metres, metres => metres, "m");
 
         /// <summary>
         /// The Inches unit
         /// Contains conversion logic to from and formatting.
+        /// 英寸
         /// </summary>
         public static readonly LengthUnit Inches = new LengthUnit(inches => 0.0254 * inches, metres => metres / 0.0254, "in");
 
         /// <summary>
         /// The Miles unit
         /// Contains conversion logic to from and formatting.
+        /// 英里
         /// </summary>
         public static readonly LengthUnit Miles = new LengthUnit(miles => 1609.344 * miles, metres => metres / 1609.344, "mi");
 
         /// <summary>
         /// The Yards unit
         /// Contains conversion logic to from and formatting.
+        /// 码
         /// </summary>
         public static readonly LengthUnit Yards = new LengthUnit(yards => 0.9144 * yards, metres => metres / 0.9144, "yd");
 
         /// <summary>
         /// The NauticalMiles unit
         /// Contains conversion logic to from and formatting.
+        /// 海里
         /// </summary>
         public static readonly LengthUnit NauticalMiles = new LengthUnit(nauticalMiles => 1852 * nauticalMiles, metres => metres / 1852, "nmi");
 
@@ -51,36 +57,42 @@ namespace Gu.Units
         /// <summary>
         /// The Nanometres unit
         /// Contains conversion logic to from and formatting.
+        /// 纳米
         /// </summary>
         public static readonly LengthUnit Nanometres = new LengthUnit(nanometres => nanometres / 1000000000, metres => 1000000000 * metres, "nm");
 
         /// <summary>
         /// The Micrometres unit
         /// Contains conversion logic to from and formatting.
+        /// 微米
         /// </summary>
         public static readonly LengthUnit Micrometres = new LengthUnit(micrometres => micrometres / 1000000, metres => 1000000 * metres, "μm");
 
         /// <summary>
         /// The Millimetres unit
         /// Contains conversion logic to from and formatting.
+        /// 毫米
         /// </summary>
         public static readonly LengthUnit Millimetres = new LengthUnit(millimetres => millimetres / 1000, metres => 1000 * metres, "mm");
 
         /// <summary>
         /// The Centimetres unit
         /// Contains conversion logic to from and formatting.
+        /// 厘米
         /// </summary>
         public static readonly LengthUnit Centimetres = new LengthUnit(centimetres => centimetres / 100, metres => 100 * metres, "cm");
 
         /// <summary>
         /// The Decimetres unit
         /// Contains conversion logic to from and formatting.
+        /// 分米
         /// </summary>
         public static readonly LengthUnit Decimetres = new LengthUnit(decimetres => decimetres / 10, metres => 10 * metres, "dm");
 
         /// <summary>
         /// The Kilometres unit
         /// Contains conversion logic to from and formatting.
+        /// 千米
         /// </summary>
         public static readonly LengthUnit Kilometres = new LengthUnit(kilometres => 1000 * kilometres, metres => metres / 1000, "km");
 
@@ -99,9 +111,15 @@ namespace Gu.Units
         /// <summary>
         /// Initializes a new instance of the <see cref="LengthUnit"/> struct.
         /// </summary>
-        /// <param name="toMetres">The conversion to <see cref="Metres"/></param>
-        /// <param name="fromMetres">The conversion to <paramref name="symbol"/></param>
-        /// <param name="symbol">The symbol for the <see cref="Metres"/></param>
+        /// <param name="toMetres">The conversion to <see cref="Metres"/>
+        /// 第一个参数：其他长度转为国际单位m的算法
+        /// </param>
+        /// <param name="fromMetres">The conversion to <paramref name="symbol"/>
+        /// 第二个参数：国际单位m的长度转为当前单位的算法
+        /// </param>
+        /// <param name="symbol">The symbol for the <see cref="Metres"/>
+        /// 第三个参数：当前单位的字符串符号
+        /// </param>
         public LengthUnit(Func<double, double> toMetres, Func<double, double> fromMetres, string symbol)
         {
             this.toMetres = toMetres;
@@ -111,15 +129,19 @@ namespace Gu.Units
 
         /// <summary>
         /// Gets the symbol for the <see cref="Gu.Units.LengthUnit"/>.
+        /// 单位的符号
         /// </summary>
         public string Symbol => this.symbol;
 
         /// <summary>
         /// Gets the default unit for <see cref="Gu.Units.LengthUnit"/>
+        /// 对应的国际单位：米
         /// </summary>
         public LengthUnit SiUnit => Metres;
 
-        /// <inheritdoc />
+        /// <summary>
+        /// 国际单位：米
+        /// </summary>
         IUnit IUnit.SiUnit => Metres;
 
         /// <summary>
@@ -135,6 +157,7 @@ namespace Gu.Units
 
         /// <summary>
         /// Indicates whether two <see cref="Gu.Units.LengthUnit"/> instances are equal.
+        /// 单位相等
         /// </summary>
         /// <returns>
         /// true if the quantities of <paramref name="left"/> and <paramref name="right"/> are equal; otherwise, false.
@@ -148,6 +171,7 @@ namespace Gu.Units
 
         /// <summary>
         /// Indicates whether two <see cref="Gu.Units.LengthUnit"/> instances are not equal.
+        /// 单位不等
         /// </summary>
         /// <returns>
         /// true if the quantities of <paramref name="left"/> and <paramref name="right"/> are not equal; otherwise, false.
@@ -269,6 +293,7 @@ namespace Gu.Units
 
         /// <summary>
         /// Returns a quantity indicating whether this instance is equal to a specified <see cref="Gu.Units.LengthUnit"/> object.
+        /// 单位相等：符号相等，则认为单位相等
         /// </summary>
         /// <param name="other">An instance of <see cref="Gu.Units.LengthUnit"/> object to compare with this instance.</param>
         /// <returns>
@@ -279,13 +304,20 @@ namespace Gu.Units
             return this.symbol == other.symbol;
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// 单位相等
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object? obj)
         {
             return obj is LengthUnit other && this.Equals(other);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// 哈希值
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             if (this.symbol is null)

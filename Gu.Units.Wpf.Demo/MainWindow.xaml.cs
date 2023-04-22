@@ -1,4 +1,4 @@
-﻿namespace Gu.Units.Wpf.Demo
+namespace Gu.Units.Wpf.Demo
 {
     using System.Windows;
 

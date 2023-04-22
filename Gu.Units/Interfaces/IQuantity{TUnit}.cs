@@ -1,9 +1,10 @@
-﻿namespace Gu.Units
+namespace Gu.Units
 {
     using System;
 
     /// <summary>
     /// An amount of <typeparamref name="TUnit"/>.
+    /// 物理量（泛型接口）.
     /// </summary>
     /// <typeparam name="TUnit">The corresponding unit.</typeparam>
     public interface IQuantity<in TUnit> : IQuantity
@@ -11,6 +12,7 @@
     {
         /// <summary>
         /// Gets the scalar value in <paramref name="unit"/>.
+        /// 获取特定单位下的值.
         /// </summary>
         /// <param name="unit">The unit.</param>
         /// <returns>The scalar value.</returns>
@@ -18,6 +20,7 @@
 
         /// <summary>
         /// Converts the quantity value of this instance to its equivalent string representation.
+        /// 将物理量的值转换为其等效的字符串表示形式.
         /// </summary>
         /// <param name="unit">The unit to use in the conversion.</param>
         /// <returns>The string representation of the value of this instance.</returns>
